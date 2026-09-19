@@ -67,19 +67,6 @@ Run `/motiontracker` (or `/filterscan`) with no arguments to clear the filter.
 | `/mtalert move <x> <y>` | Reposition the popup |
 | `/mtalert size <radius>` | Resize the popup |
 
-A couple of debug commands (`scandebug`, `deathdebug`) are also still fully functional but left out of the in-game `/mtalert` listing so they don't clutter it for everyday use — see below.
-
-## Debug commands
-
-These stay in the addon and work exactly as before; they're just hidden from the plain `/mtalert` help listing.
-
-- **`/mtalert scandebug`** — for every local-scan slot whose name/id matches your filter, prints a diagnostic line (name, target index, server id, HP%, actor pointer, render flags, status, spawn flags, position, distance and vertical offset from you) to your normal chat log, *before* the status/HP gating is applied. This is the tool to reach for if something isn't detecting, or is detecting a phantom that shouldn't be there.
-- **`/mtalert deathdebug`** — logs death-message handling, useful for chasing "still shows as tracked after a kill" issues.
-
-## A note on this server's pop mechanics
-
-CatsEyeXI hands out a **fixed, permanent Server ID per pop point** rather than a fresh one per spawn — the same pop point's Server ID doesn't change between kills. MotionTracker's local-scan death-tracking accounts for this: a "dead" mark on a Server ID is cleared as soon as HP > 0 is seen for it again, rather than waiting for the entity to fully leave the client's local entity table (which, on this server, it may never actually do if the next spawn reuses the same ID). Without this, a pop point could get permanently blacklisted after its first kill.
-
 ## Credits / License
 
 - Original `filterscan` addon and its Wide Scan filtering logic: **atom0s** (Ashita Development Team).
@@ -87,4 +74,3 @@ CatsEyeXI hands out a **fixed, permanent Server ID per pop point** rather than a
 
 `filterscan` was originally released under the GPLv3, and this addon is derived from it, so the full GPLv3 text is included as `LICENSE` in this package to keep that chain of attribution intact — the addon's own source header keeps a friendlier, in-universe credit to atom0s instead of the full legal boilerplate, but the license terms still apply to the whole work.
 
-Developed for and tested on **CatsEyeXI (CEXI)**.
